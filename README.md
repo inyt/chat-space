@@ -17,13 +17,12 @@
 | colomn | type | option |
 |:-:|:-:|:-:|
 | name | string | unique: true, add_index |
-| description | text | |
 
 - has_many :group_users
 - has_many :users, through: :group_users
 - has_many :messages
 
-### group_users
+### groups_users
 
 | colomn | type | option |
 |:-:|:-:|:-:|
@@ -37,7 +36,7 @@
 
 | colomn | type | option |
 |:-:|:-:|:-:|
-| body | text | null: false, add_index |
+| body | text | add_index |
 | image | string | |
 | group_id | references | foreign_key: true |
 | user_id | references | foreign_key: true |
