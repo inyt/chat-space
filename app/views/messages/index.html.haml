@@ -1,0 +1,48 @@
+.notification
+  チャットグループが作成されました。
+.content
+  .side
+    .side__user
+      %h5 name
+      .side__user--icon
+        %i.fa.fa-pencil-square-o
+        %i.fa.fa-cog
+    .side__group
+      .side__group--name
+        group name
+      .side__group--message
+        message
+      .side__group--name
+        group name
+      .side__group--message
+        message
+  .main
+    .main__header
+      .main__header--left
+        %h2 group name
+        %p.main__header--users
+          Members: member1 member2
+      .main__header--right
+        %a.main__header--right Edit
+    .main__body
+      .chat-unit
+        %p.chat-unit__name-time
+          %span.name name
+          %span.time 2016/10/01 16:46:34
+        %p.chat-unit__message message
+      .chat-unit
+        %p.chat-unit__name-time
+          %span.name name
+          %span.time 2016/10/01 16:46:34
+        %p.chat-unit__message message
+      .chat-unit
+        %p.chat-unit__name-time
+          %span.name name
+          %span.time 2016/10/01 16:46:34
+        %p.chat-unit__message message
+    .main__footer
+      .main__footer--body
+        %textarea{:row => 1,:placeholder =>"type a message"}
+        %label.footer--file
+          %i.fa.fa-image
+      %input{:type => "submit", :value => "send", :class => "submit"}
