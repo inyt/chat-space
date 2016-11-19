@@ -1,3 +1,162 @@
-// Place all the styles related to the messages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+html,body,.content{
+  height: 100%;
+}
+
+.notification{
+  background-color: #38AEF0;
+  color: #FFFFFF;
+  text-align: center;
+}
+
+.side{
+  width: 300px;
+  height: 100%;
+  background-color: #2f3e51;
+  color: #FFF;
+  text-align: left;
+  float: left;
+  .side__user{
+    height: 100px;
+    background-color: #253141;
+    line-height: 100px;
+    padding: 0 20px;
+    margin-bottom: 20px;
+    h5{
+      font-weight: bold;
+      font-size: 16px;
+      float: left;
+    }
+    .side__user--icon{
+      float: right;
+    }
+  }
+  .side__group{
+    padding: 0 20px;
+    .side__group--name{
+      font-size: 15px;
+      margin-bottom: 5px;
+    }
+    .side__group--message{
+      font-size: 11px;
+      margin-bottom: 40px;
+    }
+  }
+}
+
+.main{
+  float: left;
+  height: 100%;
+  width: calc(100% - 300px);
+  min-width: 200px;
+  color: black;
+  .main__header{
+    padding-left: 40px;
+    padding-right: 40px;
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+    height: 100px;
+    .main__header--left{
+      float: left;
+      h2{
+        margin-top: 20px;
+        line-height: 50px;
+        color: #333;
+        font-size: 20px;
+      }
+      p.main__header--users{
+        color: #999;
+        font-size: 12px;
+      }
+    }
+
+    .main__header--right{
+      float: right;
+      a.main__header--right{
+        display: inline-block;
+        margin: 28px 0;
+        padding-right: 20px;
+        padding-left: 20px;
+        line-height: 40px;
+        color: #38aef0;
+        font-size: 14px;
+        border: 2px solid;
+      }
+    }
+  }
+  .main__body{
+    padding: 30px 0;
+    height: calc(100% - 250px);
+    padding: 30px 0;
+    background-color: #fafafa;
+    .chat-unit{
+      color: #434a54;
+      padding-left: 40px;
+      padding-bottom: 40px;
+      p.chat-unit__name-time{
+        span.name{
+          font-size: 16px;
+          font-weight: bold;
+        }
+        span.time{
+          font-size: 12px;
+          color: #999;
+          padding-left: 10px;
+        }
+      }
+      p.chat-unit__message{
+        font-size: 14px;
+        padding-top: 10px;
+      }
+    }
+  }
+  .main__footer{
+    height: 50px;
+    padding: 20px 0px 20px 40px;
+    background-color: #ddd;
+    .main__footer--body{
+      float: left;
+      width: calc(100% - 180px);
+      min-width: 300px;
+      height: 50px;
+      position: relative;
+      margin: 0 10px;
+      box-sizing: border-box;
+      textarea{
+        width: 100%;
+        height: 20px;
+        padding: 15px 0px 15px 10px;
+        line-height: 20px;
+        border: none;
+        display: block;
+        resize: none;
+      }
+      label.footer--file{
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: inline-block;
+        width: 40px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        cursor: pointer;
+        i.fa.fa.-image{
+          display: inline-block;
+        }
+      }
+    }
+    .submit{
+      float: left;
+      display: inline-block;
+      width: 100px;
+      margin-left: 15px;
+      line-height: 50px;
+      color: #fff;
+      background-color: #38aef0;
+      text-align: center;
+      border: none;
+      padding: 0;
+      box-sizing: border-box;
+    }
+  }
+}
