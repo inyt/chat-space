@@ -1,7 +1,11 @@
 class GroupsController < ApplicationController
   def create
-    Group.create(create_params)
-    redirect_to controller: :messages, action: :index
+    @group = Group.new(create_params)
+    if @group.save
+      redirect_to controller: :messages, action: :index
+    else
+      render :new
+    end
   end
 
   private
