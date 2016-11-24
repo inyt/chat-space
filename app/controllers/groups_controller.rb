@@ -1,10 +1,15 @@
 class GroupsController < ApplicationController
+
+  def new
+    @group = Group.new
+  end
+
   def create
     @group = Group.new(group_params)
     if @group.save
-      redirect_to :root
+      redirect_to root_url
     else
-      render :new
+      redirect_to new_group_path
     end
   end
 
@@ -15,9 +20,9 @@ class GroupsController < ApplicationController
   def update
     @group = Group.find(params[:id])
     if @group.update(group_params)
-      redirect_to :root
+      redirect_to root_url
     else
-      render :edit
+      redirect_to edit_group_path
     end
   end
 
