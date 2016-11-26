@@ -3,8 +3,10 @@
     .side__user
       %h5= current_user.name
       .side__user--icon
-        %i.fa.fa-pencil-square-o
-        %i.fa.fa-cog
+        %a{href: "/groups/new"}
+          %i.fa.fa-pencil-square-o
+        %a{href: "/users/edit"}
+          %i.fa.fa-cog
     .side__group
       - @groups.each do |group|
         %a{href: "/groups/#{group.id}/messages"}
@@ -25,7 +27,8 @@
           %span
             = user.name
       .main__header--right
-        %a.main__header--right Edit
+        %a.main__header--right{href: "/groups/#{params[:group_id]}/edit"}
+          Edit
     .main__body
       - @group.messages.last(5).reverse_each do |message|
         .chat-unit
