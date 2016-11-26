@@ -26,6 +26,10 @@ html,body,.content{
   }
   .side__group{
     padding: 0 20px;
+    a{
+      color: white;
+      text-decoration: none;
+    }
     .side__group--name{
       font-size: 15px;
       margin-bottom: 5px;
