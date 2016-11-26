@@ -1,19 +1,17 @@
 .content
   .side
     .side__user
-      %h5 name
+      %h5= current_user.name
       .side__user--icon
         %i.fa.fa-pencil-square-o
         %i.fa.fa-cog
     .side__group
-      .side__group--name
-        group name
-      .side__group--message
-        message
-      .side__group--name
-        group name
-      .side__group--message
-        message
+      -# - @groups.each do |group|
+      -#   .side__group--name
+      -#     = group.name
+      -#   .side__group--message
+      -#     message
+
   .main
     .main__header
       .main__header--left
@@ -39,7 +37,8 @@
           %span.time 2016/10/01 16:46:34
         %p.chat-unit__message message
     .main__footer
-      = form_for @message, html: { class: "main__footer--body" } do |f|
+      = form_for [@group, @message], html: { class: "main__footer--body" } do |f|
+        = f.hidden_field :group_id, value: @group.id
         = f.text_field :body, placeholder: "type a message"
         %label.footer--file
           -# = f.file_field :image
