@@ -3,8 +3,7 @@ class MessagesController < ApplicationController
   def index
     @message = Message.new
     @group = Group.find(params[:group_id])
-    # @groups = Group.limit(5)
-    # @group = Group.first
+    @groups = Group.all
   end
 
   def create
