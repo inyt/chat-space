@@ -8,37 +8,22 @@
         = link_to edit_user_registration_path do
           %i.fa.fa-cog
     .side__group
-      - @groups.each do |group|
-        = link_to group_messages_path(group) do
-          .side__group--name
-            = group.name
-          .side__group--message
-            - if group.messages.last
-              = group.messages.last.body
-            - else
-              no messages
+      = render partial: 'side_group', collection: @groups, as: 'group'
+
 
   .main
     .main__header
       .main__header--left
         %h2= @group.name
         %p.main__header--users
-        - @group.users.each do |user|
-          %span
-            = user.name
+        = render partial: 'group_user', group: @group
       .main__header--right
         = link_to edit_group_path(@group) do
           .main__header--right__link
             Edit
 
     .main__body
-      - @group.messages.last(5).reverse_each do |message|
-        .chat-unit
-          %p.chat-unit__name-time
-            %span.name= message.user.name
-            %span.time= message.updated_at
-          %p.chat-unit__message= message.body
-
+      = render partial: 'messages', collection: @messages, as: 'message'
     .main__footer
       = form_for [@group, @message], html: { class: "main__footer--body" } do |f|
         = f.text_field :body, placeholder: "type a message"
