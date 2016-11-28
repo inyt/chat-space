@@ -9,7 +9,7 @@
           %i.fa.fa-cog
     .side__group
       - @groups.each do |group|
-        = link_to group_messages_path do
+        = link_to group_messages_path(group) do
           .side__group--name
             = group.name
           .side__group--message
