@@ -8,11 +8,11 @@ class MessagesController < ApplicationController
   end
 
   def create
-    if Message.create(message_params)
+    @message = Message.new
+    if @message.save
       redirect_to group_messages_path, notice: "メッセージが投稿されました。"
     else
-      flash.now[:alert] = "メッセージの投稿に失敗しました。"
-      render :index
+      redirect_to group_messages_path ,alert: "メッセージの投稿に失敗しました。"
     end
   end
 
