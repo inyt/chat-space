@@ -1,0 +1,18 @@
+.content
+  .side
+    .side__user
+      %h5= current_user.name
+      .side__user--icon
+        = link_to new_group_path do
+          %i.fa.fa-pencil-square-o
+        = link_to edit_user_registration_path do
+          %i.fa.fa-cog
+    .side__group
+      = render partial: 'group', collection: @groups
+
+  .main
+    .main__header
+      .main__header--left
+
+    .main__body
+    .main__footer

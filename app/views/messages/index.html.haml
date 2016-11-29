@@ -1,45 +1,31 @@
 .content
   .side
     .side__user
-      %h5 name
+      %h5= current_user.name
       .side__user--icon
-        %i.fa.fa-pencil-square-o
-        %i.fa.fa-cog
+        = link_to new_group_path do
+          %i.fa.fa-pencil-square-o
+        = link_to edit_user_registration_path do
+          %i.fa.fa-cog
     .side__group
-      .side__group--name
-        group name
-      .side__group--message
-        message
-      .side__group--name
-        group name
-      .side__group--message
-        message
+      = render partial: 'group', collection: @groups
+
+
   .main
     .main__header
       .main__header--left
-        %h2 group name
+        %h2= @group.name
         %p.main__header--users
-          Members: member1 member2
+        = render partial: 'user', collection: @group.users
       .main__header--right
-        %a.main__header--right Edit
+        = link_to edit_group_path(@group) do
+          .main__header--right__link
+            Edit
+
     .main__body
-      .chat-unit
-        %p.chat-unit__name-time
-          %span.name name
-          %span.time 2016/10/01 16:46:34
-        %p.chat-unit__message message
-      .chat-unit
-        %p.chat-unit__name-time
-          %span.name name
-          %span.time 2016/10/01 16:46:34
-        %p.chat-unit__message message
-      .chat-unit
-        %p.chat-unit__name-time
-          %span.name name
-          %span.time 2016/10/01 16:46:34
-        %p.chat-unit__message message
+      = render partial: 'message', collection: @messages
     .main__footer
-      = form_for @message, html: { class: "main__footer--body" } do |f|
+      = form_for [@group, @message], html: { class: "main__footer--body" } do |f|
         = f.text_field :body, placeholder: "type a message"
         %label.footer--file
           -# = f.file_field :image

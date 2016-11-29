@@ -14,7 +14,6 @@ html,body,.content{
     background-color: #253141;
     line-height: 100px;
     padding: 0 20px;
-    margin-bottom: 20px;
     h5{
       font-weight: bold;
       font-size: 16px;
@@ -22,17 +21,25 @@ html,body,.content{
     }
     .side__user--icon{
       float: right;
+      a{
+        @include link_no_deco;
+      }
     }
   }
   .side__group{
     padding: 0 20px;
+    height: calc(100% - 100px);
+    overflow-y: scroll;
+    a{
+      @include link_no_deco;
+    }
     .side__group--name{
       font-size: 15px;
-      margin-bottom: 5px;
+      padding-top: 20px;
     }
     .side__group--message{
       font-size: 11px;
-      margin-bottom: 40px;
+      padding-bottom: 20px;
     }
   }
 }
@@ -65,7 +72,7 @@ html,body,.content{
 
     .main__header--right{
       float: right;
-      a.main__header--right{
+      .main__header--right__link{
         display: inline-block;
         margin: 28px 0;
         padding-right: 20px;
@@ -74,12 +81,14 @@ html,body,.content{
         color: #38aef0;
         font-size: 14px;
         border: 2px solid;
+        text-decoration: none;
       }
     }
   }
   .main__body{
     padding: 30px 0;
     height: calc(100% - 200px);
+    overflow-y: scroll;
     padding: 30px 0;
     background-color: #fafafa;
     .chat-unit{

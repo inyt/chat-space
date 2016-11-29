@@ -1,5 +1,9 @@
 class GroupsController < ApplicationController
 
+  def index
+    @groups = current_user.groups
+  end
+
   def new
     @group = Group.new
   end
@@ -7,7 +11,7 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     if @group.save
-      redirect_to root_url, notice: "グループが正しく作成されました。"
+      redirect_to group_messages_path(@group), notice: "グループが正しく作成されました。"
     else
       flash.now[:alert] = "グループの作成に失敗しました。"
       render :new
@@ -21,7 +25,7 @@ class GroupsController < ApplicationController
   def update
     @group = Group.find(params[:id])
     if @group.update(group_params)
-      redirect_to root_url, notice: "グループが正しく編集されました。"
+      redirect_to group_messages_path(@group), notice: "グループが正しく編集されました。"
     else
       flash.now[:alert] = "グループの編集が正しく行われませんでした。"
       render :edit
