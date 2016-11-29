@@ -29,6 +29,7 @@ html,body,.content{
   .side__group{
     padding: 0 20px;
     height: calc(100% - 100px);
+    overflow-y: scroll;
     a{
       @include link_no_deco;
     }
