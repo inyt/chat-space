@@ -12,7 +12,11 @@ class MessagesController < ApplicationController
     if @message.save
       respond_to do |format|
         format.html { redirect_to group_messages_path }
-        format.json { render json: { message: @message, name: current_user.name, time: @message.updated_at.strftime("%Y/%m/%d %H:%M:%S") } }
+        format.json { render json: {
+                                     message: @message,
+                                     name: current_user.name,
+                                     time: @message.updated_at.strftime("%Y/%m/%d %H:%M:%S")
+                                    }}
         # notice: "メッセージが投稿されました。"
       end
     else
