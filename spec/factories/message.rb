@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :message do
+    user
+    group
     body       "hello"
     image      ""
-    user_id    1
-    group_id   1
   end
 end
