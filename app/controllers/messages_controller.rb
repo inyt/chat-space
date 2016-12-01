@@ -8,7 +8,7 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message = Message.new
+    @message = Message.new(message_params)
     if @message.save
       redirect_to group_messages_path, notice: "メッセージが投稿されました。"
     else
