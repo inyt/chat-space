@@ -10,7 +10,11 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
     if @message.save
-      redirect_to group_messages_path, notice: "メッセージが投稿されました。"
+      respond_to do |format|
+        format.html { redirect_to group_messages_path }
+        format.json { render json: { message: @message, name: current_user.name, time: @message.updated_at.strftime("%Y/%m/%d %H:%M:%S") } }
+        # notice: "メッセージが投稿されました。"
+      end
     else
       redirect_to group_messages_path ,alert: "メッセージの投稿に失敗しました。"
     end

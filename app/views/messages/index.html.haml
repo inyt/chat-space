@@ -23,7 +23,8 @@
             Edit
 
     .main__body
-      = render partial: 'message', collection: @messages
+      %ul.message-list
+        = render partial: 'message', collection: @messages
     .main__footer
       = form_for [@group, @message], html: { class: "main__footer--body" } do |f|
         = f.text_field :body, placeholder: "type a message"
