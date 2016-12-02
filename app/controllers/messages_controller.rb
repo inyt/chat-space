@@ -4,7 +4,8 @@ class MessagesController < ApplicationController
     @message = Message.new
     @group = Group.find(params[:group_id])
     @groups = current_user.groups
-    @messages = @group.messages.order('created_at DESC')
+    @users = @group.users
+    @messages = @group.messages.order('created_at ASC')
   end
 
   def create
