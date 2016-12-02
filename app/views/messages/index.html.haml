@@ -8,7 +8,7 @@
         = link_to edit_user_registration_path do
           %i.fa.fa-cog
     .side__group
-      = render partial: 'group', collection: @groups
+      = render @groups
 
 
   .main
@@ -24,7 +24,7 @@
 
     .main__body
       %ul.message-list
-        = render partial: 'message', collection: @messages
+        = render @messages
     .main__footer
       = form_for [@group, @message], html: { class: "main__footer--body" } do |f|
         = f.text_field :body, placeholder: "type a message"
