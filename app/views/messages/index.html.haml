@@ -16,7 +16,7 @@
       .main__header--left
         %h2= @group.name
         %p.main__header--users
-        = render partial: 'user', collection: @group.users
+        = render @users
       .main__header--right
         = link_to edit_group_path(@group) do
           .main__header--right__link
