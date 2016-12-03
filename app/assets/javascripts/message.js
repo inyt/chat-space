@@ -11,6 +11,14 @@ $(function(){
     $('.message-list').append(html);
   }
 
+  function pageScroll(){
+    $('.main__body').animate({scrollTop: $('.main__body')[0].scrollHeight}, 'fast');
+  }
+
+  $(document).on('turbolinks:load', function(){
+    pageScroll();
+  });
+
   $('.submit').on('click', function(e){
     e.preventDefault();
     var textField = $('#message_body')
@@ -28,8 +36,8 @@ $(function(){
     })
     .done(function(data){
       appendMessage(data);
+      pageScroll();
       textField.val('');
-      $('.main__body').animate({scrollTop: $('.main__body')[0].scrollHeight}, 'fast');
     })
     .fail(function(){
       alert('error');
