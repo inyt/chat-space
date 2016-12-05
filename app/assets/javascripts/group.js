@@ -1,5 +1,4 @@
 $(function(){
-
   var preWord = "";
   function showUser(users){
     $.each(users, function(id, user){
@@ -28,7 +27,7 @@ $(function(){
 
   $(document).on('turbolinks:load', function(){
     $('#user-search-field').on('keyup', function(){
-      var textField = $('#user-search-field')
+      var textField = $('#user-search-field');
       var input = textField.val();
 
       if(input != preWord){
@@ -40,21 +39,18 @@ $(function(){
         })
         .done(function(data){
           showUser(data);
-          // textField.val('');
 
-          $('.user-search-add').on('click', function(e){
+          $('.user-search-add').on('click', function(){
             var name = $(this).attr('data-user-name');
             var id = parseInt($(this).attr('id').match(/\d/g), 10);
             addUser(id, name);
           });
-
 
           $(document).on('click', '.user-search-remove', function(){
             var userId = parseInt($(this).attr('id').match(/\d/g), 10);
             var divId = "#group-user-" + userId;
             $(divId).remove();
           });
-
         })
         .fail(function(){
           alert('error');
@@ -63,5 +59,4 @@ $(function(){
     })
   preWord = input;
   });
-
 });
