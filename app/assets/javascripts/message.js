@@ -9,7 +9,7 @@ $(function(){
                 '</li>' +
                 '</div>';
     $('.message-list').append(html);
-  }
+  };
 
   function pageScroll(){
     $('.main__body').animate({scrollTop: $('.main__body')[0].scrollHeight}, 'fast');
@@ -44,3 +44,4 @@ $(function(){
     });
   });
 });
+
