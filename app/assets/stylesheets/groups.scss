@@ -66,8 +66,19 @@
       line-height: 30px;
       padding: 10px 15px;
       box-sizing: border-box;
+      position: relative;
     }
+
   }
+      .chat-group-form__search{
+        position: relative;
+        span{
+          position: absolute;
+          right: 20px;
+          color: $light_blue;
+          padding: 13.5px 0;
+        }
+      }
 
   .chat-group-user {
     padding: 0 15px;
@@ -101,4 +112,12 @@
     background-color: #38aef0;
     border: 0;
   }
+}
+
+.user-search-add{
+  color: $light_blue;
+}
+
+.user-search-remove{
+  color: #f05050;
 }
