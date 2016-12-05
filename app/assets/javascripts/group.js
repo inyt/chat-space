@@ -1,5 +1,5 @@
 $(function(){
-
+  var preWord = "";
   function showUser(users){
     $.each(users, function(id, user){
       var html = `<div class="chat-group-user clearfix" id="group-user-div-add-${id}">` +
@@ -26,40 +26,37 @@ $(function(){
     });
 
   $(document).on('turbolinks:load', function(){
-    $('#member-search').on('click', function(e){
-      e.preventDefault();
-      var textField = $('#user-search-field')
+    $('#user-search-field').on('keyup', function(){
+      var textField = $('#user-search-field');
       var input = textField.val();
 
-      $.ajax({
-        type: 'GET',
-        url: '/users/search',
-        data: { input: input },
-        dataType: 'json'
-      })
-      .done(function(data){
-        showUser(data);
-        textField.val('');
+      if(input != preWord){
+        $.ajax({
+          type: 'GET',
+          url: '/users/search',
+          data: { input: input },
+          dataType: 'json'
+        })
+        .done(function(data){
+          showUser(data);
 
-        $('.user-search-add').on('click', function(e){
-          var name = $(this).attr('data-user-name');
-          var id = parseInt($(this).attr('id').match(/\d/g), 10);
-          addUser(id, name);
+          $('.user-search-add').on('click', function(){
+            var name = $(this).attr('data-user-name');
+            var id = parseInt($(this).attr('id').match(/\d/g), 10);
+            addUser(id, name);
+          });
+
+          $(document).on('click', '.user-search-remove', function(){
+            var userId = parseInt($(this).attr('id').match(/\d/g), 10);
+            var divId = "#group-user-" + userId;
+            $(divId).remove();
+          });
+        })
+        .fail(function(){
+          alert('error');
         });
-
-
-        $(document).on('click', '.user-search-remove', function(){
-          var userId = parseInt($(this).attr('id').match(/\d/g), 10);
-          var divId = "#group-user-" + userId;
-          $(divId).remove();
-        });
-
-      })
-      .fail(function(){
-        alert('error');
-      });
+      }
     })
-
+  preWord = input;
   });
-
 });
