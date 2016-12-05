@@ -19,6 +19,11 @@ $(function(){
     $('#chat-group-users').append(html);
   };
 
+    $('.user-search-remove').on('click', function(){
+      var userId = parseInt($(this).attr('id').match(/\d/g), 10);
+      var divId = "#group-user-" + userId;
+      $(divId).remove();
+    });
 
   $(document).on('turbolinks:load', function(){
     $('#member-search').on('click', function(e){
@@ -40,7 +45,6 @@ $(function(){
           var name = $(this).attr('data-user-name');
           var id = parseInt($(this).attr('id').match(/\d/g), 10);
           addUser(id, name);
-          $()
         });
 
 
