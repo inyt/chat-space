@@ -6,6 +6,7 @@ $(function(){
                 '<span class="name">' + data.name + '</span>' +
                 '<span class="time">' + data.time + '</span>' +
                 '<p class="chat-unit__message">' + data.message.body + '</p>' +
+                `<img src="${data.message.image.url}">` +
                 '</li>' +
                 '</div>';
     $('.message-list').append(html);
@@ -34,7 +35,7 @@ $(function(){
     .done(function(data){
       appendMessage(data);
       pageScroll();
-      textField.val('');
+      $('#message_body').val('');
     })
     .fail(function(){
       alert('error');
