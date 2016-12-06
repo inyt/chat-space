@@ -21,17 +21,14 @@ $(function(){
 
   $('.submit').on('click', function(e){
     e.preventDefault();
-    var textField = $('#message_body')
-    var message = textField.val();
+    var message = new FormData($('#new_message').get(0));
     requestUrl = document.location.pathname;
     $.ajax({
       type: 'POST',
       url: requestUrl,
-      data: {
-        message: {
-          body: message
-        }
-      },
+      data: message,
+      processData: false,
+      contentType: false,
       dataType: 'json'
     })
     .done(function(data){

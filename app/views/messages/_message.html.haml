@@ -3,3 +3,5 @@
     %span.name= message.user.name
     %span.time= message.updated_at.strftime("%Y/%m/%d %H:%M:%S")
     %p.chat-unit__message= message.body
+    - if message.image.url
+      = image_tag message.image.thumb.url
