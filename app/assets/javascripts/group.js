@@ -58,7 +58,7 @@ $(function(){
           alert('error');
         });
       }
-    })
   preWord = input;
+    })
   });
 });
