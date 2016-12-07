@@ -1,20 +1,55 @@
 $(function(){
 
   function appendMessage(data){
-    var html =  '<div class="chat-unit">' +
-                '<li class="chat-unit__name-time">' +
-                '<span class="name">' + data.name + '</span>' +
-                '<span class="time">' + data.time + '</span>' +
-                '<p class="chat-unit__message">' + data.message.body + '</p>' +
-                `<img src="${data.message.image.url}">` +
-                '</li>' +
-                '</div>';
+    if(data.message.image.url){
+      var html =  '<div class="chat-unit">' +
+                  '<li class="chat-unit__name-time" id="new-message">' +
+                  '<span class="name">' + data.name + '</span>' +
+                  '<span class="time">' + data.time + '</span>' +
+                  '<p class="chat-unit__message">' + data.message.body + '</p>' +
+                  `<img src="${data.message.image.url}">` +
+                  '</li>' +
+                  '</div>';
+    }else{
+      var html =  '<div class="chat-unit">' +
+                  '<li class="chat-unit__name-time" id="new-message">' +
+                  '<span class="name">' + data.name + '</span>' +
+                  '<span class="time">' + data.time + '</span>' +
+                  '<p class="chat-unit__message">' + data.message.body + '</p>' +
+                  '</li>' +
+                  '</div>';
+    }
     $('.message-list').append(html);
   };
 
   function pageScroll(){
-    $('.main__body').animate({scrollTop: $('.main__body')[0].scrollHeight}, 'fast');
+    $('.main__body').animate({scrollTop: $('.main__body')[0].scrollHeight});
   }
+
+  function autoUpdate(){
+    url = document.location.pathname;
+    if( url.match(/messages/) ){
+      $.ajax({
+        type: 'GET',
+        url: url,
+        dataType: 'json'
+      })
+      .done(function(data){
+        var length = $('li').length;
+        if(length != data.number){
+          appendMessage(data);
+          pageScroll();
+        }
+      })
+      .fail(function(){
+        alert('err');
+      });
+    }
+  }
+
+
+  setInterval(autoUpdate, 2000);
+
 
   $(document).on('turbolinks:load', function(){
     pageScroll();

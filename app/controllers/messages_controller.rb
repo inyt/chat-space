@@ -6,6 +6,21 @@ class MessagesController < ApplicationController
     @groups = current_user.groups
     @users = @group.users
     @messages = @group.messages.order('created_at ASC')
+
+
+    respond_to do |format|
+      format.html
+      if @messages
+        format.json { render json: {
+                                     message: @messages.last,
+                                     number: @messages.length,
+                                     name: @messages.last.user.name,
+                                     time: @messages.last.updated_at.strftime("%Y/%m/%d %H:%M:%S")
+                                   }}
+      else
+        format.json { render json: {} }
+      end
+    end
   end
 
   def create
