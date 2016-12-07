@@ -1,14 +1,24 @@
 $(function(){
 
   function appendMessage(data){
-    var html =  '<div class="chat-unit">' +
-                '<li class="chat-unit__name-time">' +
-                '<span class="name">' + data.name + '</span>' +
-                '<span class="time">' + data.time + '</span>' +
-                '<p class="chat-unit__message">' + data.message.body + '</p>' +
-                `<img src="${data.message.image.url}">` +
-                '</li>' +
-                '</div>';
+    if(data.message.image.url){
+      var html =  '<div class="chat-unit">' +
+                  '<li class="chat-unit__name-time" id="new-message">' +
+                  '<span class="name">' + data.name + '</span>' +
+                  '<span class="time">' + data.time + '</span>' +
+                  '<p class="chat-unit__message">' + data.message.body + '</p>' +
+                  `<img src="${data.message.image.url}">` +
+                  '</li>' +
+                  '</div>';
+    }else{
+      var html =  '<div class="chat-unit">' +
+                  '<li class="chat-unit__name-time" id="new-message">' +
+                  '<span class="name">' + data.name + '</span>' +
+                  '<span class="time">' + data.time + '</span>' +
+                  '<p class="chat-unit__message">' + data.message.body + '</p>' +
+                  '</li>' +
+                  '</div>';
+    }
     $('.message-list').append(html);
   };
 
