@@ -23,8 +23,35 @@ $(function(){
   };
 
   function pageScroll(){
-    $('.main__body').animate({scrollTop: $('.main__body')[0].scrollHeight}, 'fast');
+    $('.main__body').animate({scrollTop: $('.main__body')[0].scrollHeight}, 'slow');
   }
+
+  function autoUpdate(){
+    url = document.location.pathname;
+    if( url.match(/messages/) ){
+      $.ajax({
+        type: 'GET',
+        url: url,
+        dataType: 'json'
+      })
+      .done(function(data){
+        var length = $('li').length;
+        console.log(data.number);
+        console.log(length);
+        if(length != data.number){
+          appendMessage(data);
+          pageScroll();
+        }
+      })
+      .fail(function(){
+        alert('err');
+      });
+    }
+  }
+
+
+  setInterval(autoUpdate, 2000);
+
 
   $(document).on('turbolinks:load', function(){
     pageScroll();
