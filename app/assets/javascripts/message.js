@@ -23,7 +23,7 @@ $(function(){
   };
 
   function pageScroll(){
-    $('.main__body').animate({scrollTop: $('.main__body')[0].scrollHeight}, 'slow');
+    $('.main__body').animate({scrollTop: $('.main__body')[0].scrollHeight});
   }
 
   function autoUpdate(){
@@ -36,8 +36,6 @@ $(function(){
       })
       .done(function(data){
         var length = $('li').length;
-        console.log(data.number);
-        console.log(length);
         if(length != data.number){
           appendMessage(data);
           pageScroll();
