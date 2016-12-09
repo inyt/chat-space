@@ -7,7 +7,7 @@ $(function(){
                   '<span class="name">' + data.name + '</span>' +
                   '<span class="time">' + data.time + '</span>' +
                   '<p class="chat-unit__message">' + data.message.body + '</p>' +
-                  `<img src="${data.message.image.url}">` +
+                  '<img src="' + data.message.image.url + '">' +
                   '</li>' +
                   '</div>';
     }else{
