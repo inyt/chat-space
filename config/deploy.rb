@@ -2,16 +2,16 @@
 lock '3.6.1'
 
 # デプロイするアプリケーション名に変更してください
-set :application, 'sample'
+set :application, 'chat-space'
 
 # cloneするgitのレポジトリに変更してください
-set :repo_url, 'git@github.com:Testtarou/hoge.git'
+set :repo_url, 'https://github.com/inyt/chat-space.git'
 
 # deployするブランチ。デフォルトはmasterなのでなくても可。
 set :branch, 'master'
 
 # deploy先のディレクトリに変更してください
-set :deploy_to, '/var/www/sample'
+set :deploy_to, '/home/amazon/chat-space'
 
 # シンボリックリンクをはるファイル。(※後述)
 set :linked_files, fetch(:linked_files, []).push('config/secrets.yml')
