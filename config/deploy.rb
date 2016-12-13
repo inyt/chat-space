@@ -11,7 +11,7 @@ set :repo_url, 'https://github.com/inyt/chat-space.git'
 set :branch, 'master'
 
 # deploy先のディレクトリに変更してください
-set :deploy_to, '/home/chat-space'
+set :deploy_to, '/home/amazon/chat-space'
 
 # シンボリックリンクをはるファイル。(※後述)
 set :linked_files, fetch(:linked_files, []).push('config/secrets.yml')
